@@ -13,6 +13,10 @@
 ActiveRecord::Schema.define(version: 2022_05_29_193850) do
 
   create_table "flashcards", force: :cascade do |t|
+    t.string "title"
+    t.string "text"
+    t.string "context"
+    t.string "pronunciation"
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
