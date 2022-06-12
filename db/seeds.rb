@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+10.times do |i|
+  MindCard.create(title: "Title #{i}", text: "Text #{i}", context: "Context #{i}", active: true)
+end
