@@ -1,1 +1,9 @@
 h1= 'We here'
+ol
+  - @mind_cards.each_with_index do |mind_card, index|
+    li.m-2 class="#{index.odd? ? 'bg-light' : ''}"
+      = link_to mind_card.title, mind_card_path(mind_card)
+      = link_to edit_mind_card_path(mind_card) do
+        i.ml-2.fa-solid.fa-pen
+      = link_to mind_card_path(mind_card), method: :delete do
+        i.ml-2.fa-solid.fa-trash-alt
