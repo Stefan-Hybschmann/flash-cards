@@ -1,3 +1,7 @@
-h1= 'New'
+h1= 'New Mind Card'
 
 = render 'form', locals: { mind_card: @mind_card }
+
+= link_to mind_cards_path, class: 'btn btn-outline-primary mr-2' do
+  i.fa.fa-arrow-left.mr-2
+  = 'Back'
