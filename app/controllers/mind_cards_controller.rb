@@ -2,7 +2,7 @@ class MindCardsController < ApplicationController
   before_action :set_mind_card, only: [:show, :edit, :update, :destroy]
 
   def index
-    @mind_cards = MindCard.all
+    @mind_cards = MindCard.all.order(title: :asc)
   end
 
   def show; end
@@ -13,7 +13,7 @@ class MindCardsController < ApplicationController
 
   def create
     @mind_card = MindCard.new(mind_card_params)
-
+    
     if @mind_card.save
       flash[:success] = "Mind card created successfully!"
       redirect_to mind_cards_path
