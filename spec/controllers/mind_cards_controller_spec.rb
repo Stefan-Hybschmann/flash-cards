@@ -37,15 +37,22 @@ RSpec.describe MindCardsController, type: :controller do
   end
 
   describe '#create' do
-    it 'creates a new mind card' do
-      expect { 
-        post :create, params: params
-      }.to change { MindCard.count }.by(1)
-    end
+    context 'when the mind card is valid' do
+      it 'creates a new mind card' do
+        expect { 
+          post :create, params: params
+        }.to change { MindCard.count }.by(1)
+      end
 
-    it 'redirects to the mind card index' do
-      post :create, params: params
-      expect(response).to redirect_to(mind_cards_path)
+      it 'redirects to the mind card index' do
+        post :create, params: params
+        expect(response).to redirect_to(mind_cards_path)
+      end
+
+      it 'throws a flash success message' do
+        post :create, params: params
+        expect(flash[:success]).to be_present
+      end
     end
 
     context 'when the mind card is invalid' do
@@ -59,6 +66,11 @@ RSpec.describe MindCardsController, type: :controller do
         post :create, params: { mind_card: { title: '' } }
         expect(response).to render_template(:new)
       end
+
+      it 'throws a flash error message' do
+        post :create, params: { mind_card: { title: '' } }
+        expect(flash[:error]).to be_present
+      end
     end
   end
 
@@ -70,9 +82,21 @@ RSpec.describe MindCardsController, type: :controller do
   end
 
   describe '#update' do
-    it 'updates the mind card' do
-      put :update, params: { id: mind_card.id, mind_card: { title: 'new title' } }
-      expect(mind_card.reload.title).to eq('new title')
+    context 'When the mind card is valid' do
+      it 'updates the mind card' do
+        put :update, params: { id: mind_card.id, mind_card: { title: 'new title' } }
+        expect(mind_card.reload.title).to eq('new title')
+      end
+
+      it 'redirects to the mind card index' do
+        put :update, params: { id: mind_card.id, mind_card: { title: 'new title' } }
+        expect(response).to redirect_to(mind_cards_path)
+      end
+
+      it 'throws a flash success message' do
+        put :update, params: { id: mind_card.id, mind_card: { title: 'new title' } }
+        expect(flash[:success]).to be_present
+      end
     end
 
     context 'when the mind card is invalid' do
@@ -80,14 +104,36 @@ RSpec.describe MindCardsController, type: :controller do
         put :update, params: { id: mind_card.id, mind_card: { title: '' } }
         expect(mind_card.reload.title).to eq('mind card title')
       end
+
+      it 'renders the edit template' do
+        put :update, params: { id: mind_card.id, mind_card: { title: '' } }
+        expect(response).to render_template(:edit)
+      end
+
+      it 'throws a flash error message' do
+        put :update, params: { id: mind_card.id, mind_card: { title: '' } }
+        expect(flash[:error]).to be_present
+      end
     end
   end
 
   describe '#destroy' do
-    it 'deletes the mind card' do
-      expect { 
-        delete :destroy, params: { id: mind_card.id } 
-      }.to change { MindCard.count }.by(-1)
+    context 'when the mind card is valid' do
+      it 'deletes the mind card' do
+        expect { 
+          delete :destroy, params: { id: mind_card.id } 
+        }.to change { MindCard.count }.by(-1)
+      end
+
+      it 'redirects to the mind card index' do
+        delete :destroy, params: { id: mind_card.id }
+        expect(response).to redirect_to(mind_cards_path)
+      end
+
+      it 'throws a flash success message' do
+        delete :destroy, params: { id: mind_card.id }
+        expect(flash[:success]).to be_present
+      end
     end
   end
 end

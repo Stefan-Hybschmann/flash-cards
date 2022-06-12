@@ -18,7 +18,7 @@ class MindCardsController < ApplicationController
       flash[:success] = "Mind card created successfully!"
       redirect_to mind_cards_path
     else
-      flash[:error] = "Mind card creation failed!"
+      flash[:error] = @mind_card.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -30,7 +30,7 @@ class MindCardsController < ApplicationController
       flash[:success] = 'Mind card updated successfully!'
       redirect_to mind_cards_path
     else
-      flash[:error] = "Mind card update failed!"
+      flash[:error] = @mind_card.errors.full_messages.to_sentence
       render :edit
     end
   end
@@ -38,11 +38,10 @@ class MindCardsController < ApplicationController
   def destroy
     if @mind_card.destroy
       flash[:success] = "Mind card deleted successfully!"
-      redirect_to mind_cards_path
     else
-      flash[:error] = "Mind card deletion failed!"
-      render :index
+      flash[:error] = @mind_card.errors.full_messages.to_sentence
     end
+    redirect_to mind_cards_path
   end
 
   private
