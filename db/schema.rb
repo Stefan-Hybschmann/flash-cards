@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_05_29_193850) do
 
-  create_table "flashcards", force: :cascade do |t|
+  create_table "mind_cards", force: :cascade do |t|
     t.string "title"
     t.string "text"
     t.string "context"
