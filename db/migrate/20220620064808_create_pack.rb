@@ -1,6 +1,6 @@
-class CreateSet < ActiveRecord::Migration[6.0]
+class CreatePack < ActiveRecord::Migration[6.0]
   def change
-    create_table :sets do |t|
+    create_table :packs do |t|
       t.string :title
       t.string :description
       t.boolean :active, default: false

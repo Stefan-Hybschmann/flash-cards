@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2022_06_20_064808) do
     t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
   end
 
-  create_table "sets", force: :cascade do |t|
+  create_table "packs", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.boolean "active", default: false

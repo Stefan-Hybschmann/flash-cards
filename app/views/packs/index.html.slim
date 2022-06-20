@@ -1,0 +1,11 @@
+.row
+  .col-12.border-bottom
+    .title.d-flex
+      h3= 'Packs'
+      i.fa-solid.fa-layer-group
+.row.pt-5.pl-5
+  .col-12
+    .row
+      - @packs.each do |pack|
+        = render partial: 'pack', locals: { pack: pack }
+
