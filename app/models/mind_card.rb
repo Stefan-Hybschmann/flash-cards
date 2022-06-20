@@ -1,5 +1,8 @@
 class MindCard < ApplicationRecord
   extend Mobility
-  validates :title, presence: true
   translates :text, :context, :pronunciation
+
+  belongs_to :set
+
+  validates :title, presence: true
 end
