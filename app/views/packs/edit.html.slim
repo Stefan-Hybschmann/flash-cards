@@ -1,0 +1,4 @@
+h1.mb-5= 'Edit page for ' + @pack.title
+
+= form_for @pack do |f|
+  = render 'form', f: f

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_20_064808) do
+ActiveRecord::Schema.define(version: 2022_06_20_110314) do
 
   create_table "mind_card_translations", force: :cascade do |t|
     t.string "text"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2022_06_20_064808) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "pack_id"
   end
 
   create_table "mobility_string_translations", force: :cascade do |t|
