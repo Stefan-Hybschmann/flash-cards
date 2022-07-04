@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_14_200947) do
+ActiveRecord::Schema.define(version: 2022_06_20_110314) do
 
   create_table "mind_card_translations", force: :cascade do |t|
     t.string "text"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2022_06_14_200947) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "pack_id"
   end
 
   create_table "mobility_string_translations", force: :cascade do |t|
@@ -57,6 +58,14 @@ ActiveRecord::Schema.define(version: 2022_06_14_200947) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
     t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
+  end
+
+  create_table "packs", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.boolean "active", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "mind_card_translations", "mind_cards"

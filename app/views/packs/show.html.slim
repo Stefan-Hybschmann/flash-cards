@@ -1,0 +1,17 @@
+h1.mb-5= 'Show page for ' + @pack.title
+
+- if @mind_cards.present?
+  ol
+    - @mind_cards.each_with_index do |mind_card, index|
+      li.m-2 class="#{index.odd? ? 'bg-light' : ''}"
+        = link_to mind_card.title, mind_card_path(mind_card)
+        = link_to edit_mind_card_path(mind_card) do
+          i.ml-2.fa-solid.fa-pen
+        = link_to mind_card_path(mind_card), method: :delete do
+          i.ml-2.fa-solid.fa-trash-alt
+- else
+  p.m-2.text-center.text-muted
+    = 'No mind cards yet'
+= link_to 'Back', packs_path, class: 'btn btn-outline-secondary'
+= link_to 'Edit pack', edit_pack_path(@pack), class: 'btn btn-outline-secondary ml-2'
+= link_to 'New pack', new_pack_path, class: 'btn btn-primary ml-3'

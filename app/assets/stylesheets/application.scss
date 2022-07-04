@@ -1,2 +1,17 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
 @import 'bootstrap';
 @import "font-awesome";
+@import "components/packs.scss";
+
+a {
+  text-decoration: none;
+  color: #8a817c;
+
+  &:hover {
+    color: #343a40;
+    text-decoration: none;
+  }
+}

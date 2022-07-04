@@ -1,0 +1,14 @@
+.row.mt-5
+  .col-12.border-bottom
+    .title.d-flex.justify-content-between
+      .d-flex
+        h1.align-self-center= 'Packs'
+        .align-self-center.ml-3
+          i.fa-solid.fa-layer-group.fa-2xl
+      = link_to 'New pack', new_pack_path, class: 'btn btn-primary mb-3 p-3'
+.row.pt-3
+  .col-12
+    .row
+      - @packs.each do |pack|
+        = render partial: 'pack', locals: { pack: pack }
+

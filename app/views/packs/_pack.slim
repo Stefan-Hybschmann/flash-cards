@@ -1,0 +1,10 @@
+.col-4.mt-5
+  - if pack.present?
+    = link_to pack_path(pack) do
+      .pack-card.d-flex.justify-content-between
+        .pack-description
+          .pack-card-header
+            h5= pack.title
+          .pack-card-body
+            p= pack.description
+        .pack-image

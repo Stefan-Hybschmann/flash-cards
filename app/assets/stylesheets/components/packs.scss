@@ -1,0 +1,23 @@
+.pack-card {
+  box-shadow: 1px 1px 5px 2px #eff1f3;
+  border-radius: 16px;
+  height: 160px;
+  transition: all 0.3s ease;
+
+  .pack-description {
+    padding: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .pack-image {
+    background-color: #8a817c;
+    min-height: 100%;
+    min-width: 250px;
+    border-radius: 0 16px 16px 0;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 4px #8a817c;
+    transform: translateY(-5px);
+  }
+}

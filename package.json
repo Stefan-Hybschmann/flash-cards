@@ -1,5 +1,5 @@
 {
-  "name": "flash_cards",
+  "name": "mind_cards",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
